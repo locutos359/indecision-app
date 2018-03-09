@@ -3,5 +3,13 @@
     "extends": "google",
     "plugins": [
         "react"
-    ]
+    ],
+    "rules": {
+      "max-len": [
+          "error",
+          {
+              "code": 120
+          }
+      ]
+    }
 }
