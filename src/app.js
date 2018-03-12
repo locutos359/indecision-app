@@ -17,29 +17,37 @@ const template = (
     </div>
 );
 
-/**
- * @param {string} location
- * @return {string} locationHtml
- */
-function getLocation(location) {
-    if (location) {
-        return <p>Location: {location}</p>;
-    }
+let count = 0;
+const increment = () => {
+    count++;
+    renderCounterApp();
 }
 
-const user = {
-    name: 'Matt',
-    age: 28,
-    location: 'Seattle',
-};
+const decrement = () => {
+    count--;
+    renderCounterApp();
+}
 
-const template2 = (
-    <div>
-        <h1>{user.name ? user.name : 'Anonymous'}</h1>
-        {(user.age && user.age >= 18) && <p>Age: {user.age}</p>}
-        <p>{getLocation(user.location)}</p>
-    </div>
-);
+const reset = () => {
+    count = 0;
+    renderCounterApp();
+}
 
 const appRoot = document.getElementById('app');
-ReactDOM.render(template, appRoot);
+
+const renderCounterApp = () => {
+    const templateTwo = (
+        <div>
+            <h1>Count: {count}</h1>
+            <button onClick={increment}>+1</button>
+            <br/>
+            <button onClick={decrement}>-1</button>
+            <br/>
+            <button onClick={reset}>Reset</button>
+        </div>
+    );
+
+    ReactDOM.render(templateTwo, appRoot);
+}
+
+renderCounterApp();
